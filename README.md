@@ -1,4 +1,4 @@
-twitter-streaming-nodejs
+twitter-streaming-data-google maps
 ========================
 
 Shows how to stream real time twitter data to Google Maps using NodeJS.
