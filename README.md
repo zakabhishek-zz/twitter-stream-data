@@ -157,4 +157,52 @@ You should then be able to open a browser and access http://localhost:8081.
 
 # Amazon Elastic Beanstalk 
 
-To host the application this we used AWS Elastic Beanstalk. The GitHub read me walks through how to deploy the application.
+To host the application this we used AWS Elastic Beanstalk follow the steps below : 
+
+- Step 1: Create AWS Account
+
+Since we will be hosting our web application on Amazon Web Services, you first need an account:
+
+Visit http://aws.amazon.com.
+Click the Sign Up button at the top.
+Complete the registration process.
+
+- Step 2: Create an AWS Elastic Beanstalk application
+
+Access Elastic Beanstalk from the console. Choose to create a new application and give it a name and description.
+
+- Step 3: Create an Environment
+
+An application can have multiple environments; for example, production, staging, and development. Setup an environment using the parameters below:
+
+create environment
+
+Give the environment a unique name.
+
+environnment information
+
+You are then prompted to choose the source for the application. Choose to upload your own.
+
+upload application
+
+Upload a zip file containing the application. Now this caught me out first time and I think it is really a bug with Beanstalk. You cannot zip the containing folder; you need to zip the files you want within the folder. You only need to zip the items highlighted below. Beanstalk will install its own dependencies using package.json.
+
+Zip File Node
+
+Next, configure the instance you are launching. You don't really need an EC2 key pair unless you plan on logging onto the server. Everything else can be left as default.
+
+configuration details
+
+You will then be taken to the dashboard where you need to wait for it to launch:
+
+launch complete
+
+Once launched, one more step needs to be undertaken. Node.js starts two processes: the web server to handle the static pages, and the web socket server. On Elastic Beanstalk, all of the traffic goes through Nginx, which acts as a proxy server. This prevents the web sockets from functioning correctly. We could go through the trouble of configuring Nginx, but since we are only using web sockets it is easier to turn all proxies off and direct connect.
+
+While on your environment dashboard, click Configuration from the left menu. Then on the Software Configuration tile click the Cog icon. Set the Proxy server drop-down to none and click Save.
+
+configure proxy
+
+You can now access the web page by clicking the link next to the title on the environment dashboard.
+You can follow the steps here : <a href = "https://github.com/safesoftware/twitter-streaming-nodejs">Link </a>
+
