@@ -145,7 +145,7 @@ The webpages are all served from the public folder. The index.html file loads th
   }
 This sets up the Google Map then opens up a websocket connection with the server. Once the server confirms it has received the connection and is ready to start sending Tweets, the connected listener is called and the client sends a message back to the server to say it is ready via socket.emit(“start tweets”);. The server responds with a stream of Tweets captured in the twitter-stream listener, where they are added to an array bound to a Google Maps heat layer.
 
-Step 2: Running the Application Locally
+# Step 2: Running the Application Locally
 
 First we need to install the dependencies (defined in package.json). From the terminal, cd to the project directory you downloaded so you are in the same folder as server.js. Then do:
 
@@ -154,5 +154,7 @@ To run the server, do:
 
 node server
 You should then be able to open a browser and access http://localhost:8081.
+
+# Amazon Elastic Beanstalk 
 
 To host the application this we used AWS Elastic Beanstalk. The GitHub read me walks through how to deploy the application.
